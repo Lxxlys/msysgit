@@ -1045,13 +1045,6 @@ begin
         if RdbPath[GP_CmdTools].Checked then begin
             SetArrayLength(EnvPath,i+2);
             EnvPath[i+1]:=AppDir+'\bin';
-
-            // Set HOME for the Windows Command Prompt, but only if it has not been set manually before.
-            EnvHome:=GetEnvStrings('HOME',IsAdminLoggedOn);
-            i:=GetArrayLength(EnvHome);
-            if (i=0) or ((i=1) and (Length(EnvHome[0])=0)) then begin
-                SetAndMarkEnvString('HOME','%HOMEDRIVE%%HOMEPATH%',True);
-            end;
         end;
     end;
 
